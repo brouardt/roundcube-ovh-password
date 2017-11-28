@@ -37,7 +37,7 @@ The plugin is known to be working with Roundcube version 1.0 to ...
     'password'
     ];
     ```
-4. Go to https://api.ovh.com/createToken/. Define your application name, description, validity and credentials and take the informations given by a registration document after click on [create token] button, to fill your configuration file.
+4. Go to https://api.ovh.com/createToken/. Define the name, description, validity and credentials of your application and take the information provided on the registration document after clicking the [Create Token] button, and fill in your configuration file.
 
 	```txt
 	Credentials :
