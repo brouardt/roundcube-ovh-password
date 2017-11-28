@@ -52,4 +52,5 @@ class rcube_ovh_password
             return $code;
         }
     }
+    
 }
