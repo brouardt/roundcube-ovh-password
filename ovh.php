@@ -46,7 +46,7 @@ class rcube_ovh_password
                     $code = PASSWORD_CONNECT_ERROR;
                     break;
                 default:
-                    $code = PASSWORD_SUCCESS;
+                    $code = PASSWORD_ERROR;
                     break;
             }
             return $code;
