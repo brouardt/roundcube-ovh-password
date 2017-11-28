@@ -10,7 +10,7 @@ The plugin is known to be working with Roundcube version 1.0 to ...
 - OVH API library
 
 ## Installation
-1. Add in the root compose.json file, in the require section 
+1. Add in the root composer.json file, in the require section 
 
 	```json
 	"require": {
@@ -31,6 +31,11 @@ The plugin is known to be working with Roundcube version 1.0 to ...
 
     ```php
     $config['plugins'] = array(...,'password');
+    or
+    $config['plugins'] = [
+    ...,
+    'password'
+    ];
     ```
 4. Go to https://api.ovh.com/createToken/. Define your application name, description, validity and credentials and take the informations given by a registration document after click on [create token] button, to fill your configuration file.
 
@@ -43,10 +48,10 @@ The plugin is known to be working with Roundcube version 1.0 to ...
 5. Set your API keys in config/config.inc.php. 
 
     ```php
-	$config['ovh_application_key'] = '';
-	$config['ovh_application_secret'] = '';
+	$config['ovh_application_key'] = '%MddoeEXAMPLE*$eà@er';
+	$config['ovh_application_secret'] = 'TrucKL54?_dopsd%%';
 	$config['ovh_endpoint'] = 'ovh-eu';	// choose your provider between ovh-eu ot ovh-ca
-	$config['ovh_consumer_key'] = '';
+	$config['ovh_consumer_key'] = 'SecretK3YP^^P';
     ```
 
 6. Test your installation. You're done!
