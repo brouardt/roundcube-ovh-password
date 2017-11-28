@@ -30,19 +30,17 @@ class rcube_ovh_password
 
         $ovh = new Api($application_key, $application_secret, $endpoint, $consumer_key);
         try {
-            $result = $ovh->post("/email/domain/$domain/account/$name/changePassword", array(
-                'password' => $newpass
-            ));
-			return PASSWORD_SUCCESS;
+            $result = $ovh->post("/email/domain/$domain/account/$name/changePassword", array( 'password' => $newpass ));
+	    return PASSWORD_SUCCESS;
         } catch (ClientErrorResponseException $exception) {
-			$errorCode = $exception->getResponse()->getStatusCode();
+	    $errorCode = $exception->getResponse()->getStatusCode();
             switch ($errorCode) {
                 case 403:
                     rcube::raise_error(array(
                         'code' => $errorCode, 
-						'type' => 'ovh',
-                        'file' => __FILE__, 
-						'line' => __LINE__,
+			'type' => 'ovh',
+			'file' => __FILE__, 
+			'line' => __LINE__,
                         'message' => $exception->getResponse()->getBody(true)
                         ), true, false);
                     $code = PASSWORD_CONNECT_ERROR;
