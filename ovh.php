@@ -17,8 +17,8 @@ use \Ovh\Api;
 class rcube_ovh_password
 {
 
-    public function save($currpass, $newpass)
-    {
+	public function save($currpass, $newpass)
+	{
         $rc = rcmail::get_instance();
 
         list($name, $domain) = explode('@', $_SESSION['username']);
@@ -30,24 +30,24 @@ class rcube_ovh_password
 
         $ovh = new Api($application_key, $application_secret, $endpoint, $consumer_key);
         try {
-            $result = $ovh->post("/email/domain/$domain/account/$name/changePassword", array( 'password' => $newpass ));
-	    return PASSWORD_SUCCESS;
+			$result = $ovh->post("/email/domain/$domain/account/$name/changePassword", array( 'password' => $newpass ));
+			return PASSWORD_SUCCESS;
         } catch (ClientErrorResponseException $exception) {
-	    $errorCode = $exception->getResponse()->getStatusCode();
-            switch ($errorCode) {
-                case 403:
-                    rcube::raise_error(array(
-                        'code' => $errorCode, 
-			'type' => 'ovh',
-			'file' => __FILE__, 
-			'line' => __LINE__,
-                        'message' => $exception->getResponse()->getBody(true)
-                        ), true, false);
-                    $code = PASSWORD_CONNECT_ERROR;
-                    break;
-                default:
-                    $code = PASSWORD_ERROR;
-                    break;
+			$errorCode = $exception->getResponse()->getStatusCode();
+			switch ($errorCode) {
+			case 403:
+				rcube::raise_error(array(
+				'code' => $errorCode, 
+				'type' => 'ovh',
+				'file' => __FILE__, 
+				'line' => __LINE__,
+				'message' => $exception->getResponse()->getBody(true)
+				), true, false);
+				$code = PASSWORD_CONNECT_ERROR;
+				break;
+			default:
+				$code = PASSWORD_ERROR;
+				break;
             }
             return $code;
         }
